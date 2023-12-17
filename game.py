@@ -33,23 +33,30 @@ def input_move(current_player, number_of_moves):
     print(coordinates_x, coordinates_y)
     return coordinates_x, coordinates_y
 
-def check_winner(game_field):
+def check_winner(game_field, current_player):
     global winner
     if game_field[0][0] == game_field[2][0] == game_field[1][0] != ' ' or game_field[1][1] == game_field[0][1] == game_field[2][1] != " " or game_field[0][2] == game_field[1][2] == game_field[2][2] != " ":
-        print(current_player, "you won ^_^!")
+        congratulate_player(current_player)
         winner = current_player
         return winner
     if game_field[2][0] == game_field[2][1] == game_field[2][2] != " " or game_field[1][0] == game_field[1][1] == game_field[1][2] != " " or game_field[0][0] == game_field[0][1] == game_field[0][2] != " ":
-        print(current_player, "you won ^_^!")
+        congratulate_player(winner, current_player)
         winner = current_player
         return winner
     if game_field[2][0] == game_field[1][1] == game_field[0][2] != " " or game_field[0][0] == game_field[1][1] == game_field[2][2] != " ":
-        print(current_player, "you won ^_^!")
+        congratulate_player(winner, current_player)
         winner = current_player
         return winner
     else:
         winner = None
         return None
+
+
+def congratulate_player(current_player):
+    print(current_player, "you won ^_^!")
+
+
+
 
 def play():
     player_choice = "yes"
@@ -80,8 +87,7 @@ def play():
                     game_field[coordinates_y][coordinates_x] = current_player
                     print_game_field(game_field)
                     print(coordinates, "coordinates")
-                    winner = check_winner(game_field)
-                if winner is not None:
-                    break
+                    winner = check_winner(game_field, current_player)
+            if winner is not None:
+                break
         player_choice = input("again? (yes/no): ")
-
