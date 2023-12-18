@@ -1,5 +1,4 @@
 import game
-
-ask = input("hvgh")
+ask = input("yes/no")
 if ask == "yes":
     game.play()
