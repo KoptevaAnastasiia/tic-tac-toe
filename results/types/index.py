@@ -1,4 +1,4 @@
-from typing import TypedDict, List
+from typing import List
 from enum import Enum
 
 
@@ -8,13 +8,13 @@ class ResultType(Enum):
     DRAW = "draws"
 
 
-class PlayerResult(TypedDict):
+class PlayerResult:
     ResultType.WIN: int
     ResultType.LOSS: int
     ResultType.DRAW: int
 
 
-class PlayerData(TypedDict):
+class PlayerData:
     name: str
     result: PlayerResult
 
