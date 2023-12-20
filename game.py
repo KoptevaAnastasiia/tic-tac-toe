@@ -10,12 +10,14 @@ game_field = [
 first_player = 'O'
 second_player = 'X'
 
+
 def print_game_field(game_field):
     print(game_field[0])
     print(game_field[1])
     print(game_field[2])
     return game_field
-  
+
+
 def input_move(current_player, number_of_moves):
     global coordinates_x, coordinates_y, coordinates
     bring = input(f"{current_player}, введіть координати x y ")
@@ -26,6 +28,12 @@ def input_move(current_player, number_of_moves):
     coordinates_y = int(coordinates[1]) - 1
     print(coordinates_x, coordinates_y)
     return coordinates_x, coordinates_y
+
+
+def print_game_board(board):
+    for row in board:
+        print("  |  ".join(row))
+        print("-------------")
 
 
 def check_winner(game_field, current_player):
@@ -77,7 +85,7 @@ def play(save_result: Callable[[ResultType], None]):
                 if game_field[coordinates_y][coordinates_x] == ' ':
                     number_of_moves = number_of_moves - 1
                     game_field[coordinates_y][coordinates_x] = current_player
-                    print_game_field(game_field)
+                    print_game_board(game_field)
                     print(coordinates, "coordinates")
                     winner = check_winner(game_field, current_player)
 
