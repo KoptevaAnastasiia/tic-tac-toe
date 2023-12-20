@@ -20,7 +20,7 @@ class Leaderboard:
         return "--------------------------\n"
 
     def __get_header(_):
-        return "   Player            w d l\n"
+        return "   Player            w l d\n"
 
     def __get_content(self):
         content = ""
@@ -30,7 +30,8 @@ class Leaderboard:
             results_data = " ".join(
                 str(number) for number in results["result"].values()
             )
-            content += f"{i+1}. {results['name']}\t\t{results_data}\n"
+            content += f"{i+1}. {results['name'].ljust(18)}{results_data}\n"
+
         return content
 
     def print_leaderboard(self):
