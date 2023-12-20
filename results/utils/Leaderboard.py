@@ -17,10 +17,10 @@ class Leaderboard:
         )
 
     def __get_divider(_):
-        return "--------------------------\n"
+        return f"{'-':-<34}\n"
 
     def __get_header(_):
-        return "   Player            w l d\n"
+        return f"{'':3}Player {'w l d':>23}\n"
 
     def __get_content(self):
         content = ""
@@ -30,7 +30,7 @@ class Leaderboard:
             results_data = " ".join(
                 str(number) for number in results["result"].values()
             )
-            content += f"{i+1}. {results['name'].ljust(18)}{results_data}\n"
+            content += f"{i+1}. {results['name'][0:20]:20}{results_data: >10}\n"
 
         return content
 
