@@ -69,11 +69,11 @@ def play(save_result: Callable[[ResultType], None]):
         number_of_moves = 9
         winner = None
         while number_of_moves > 0:
+            input_move(current_player, number_of_moves)
             if current_player == first_player:
                 current_player = second_player
             else:
                 current_player = first_player
-            input_move(current_player, number_of_moves)
             if winner is None:
                 if coordinates_x > 2 or coordinates_y > 2:
                     print("you entered the wrong coordinates")
