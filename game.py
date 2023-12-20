@@ -17,7 +17,7 @@ def print_game_field(game_field):
 def input_move(current_player, number_of_moves):
     bring = input(f"{current_player}, введіть координати x y ")
 
-    if not bring:
+    if not bring or len(bring) < 3:
         print("You didn't enter anything")
         return input_move(current_player, number_of_moves)
 
@@ -46,7 +46,7 @@ def check_winner(game_field, current_player):
         or game_field[1][1] == game_field[0][1] == game_field[2][1] != " "
         or game_field[0][2] == game_field[1][2] == game_field[2][2] != " "
     ):
-        congratulate_player(current_player)
+
         winner = current_player
         return winner
     if (
@@ -54,14 +54,13 @@ def check_winner(game_field, current_player):
         or game_field[1][0] == game_field[1][1] == game_field[1][2] != " "
         or game_field[0][0] == game_field[0][1] == game_field[0][2] != " "
     ):
-        congratulate_player(current_player)
         winner = current_player
         return winner
     if (
         game_field[2][0] == game_field[1][1] == game_field[0][2] != " "
         or game_field[0][0] == game_field[1][1] == game_field[2][2] != " "
     ):
-        congratulate_player(current_player)
+
         winner = current_player
         return winner
     else:
@@ -102,6 +101,7 @@ def play(save_result: Callable[[ResultType], None]):
                     winner = check_winner(game_field, current_player)
 
             if winner is not None:
+                congratulate_player(current_player)
                 save_result(
                     ResultType.WIN if winner == first_player else ResultType.LOSS
                 )
