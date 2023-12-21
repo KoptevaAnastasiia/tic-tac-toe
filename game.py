@@ -3,8 +3,8 @@ from typing import Callable
 
 winner = None
 game_field = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-first_player = "O"
-second_player = "X"
+first_player = "X"
+second_player = "O"
 
 
 def print_game_field(game_field):
